@@ -18,8 +18,8 @@ $stmt->execute();
 $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($animals as $animal) {
-    echo $animal['type'] . 'の' . $animal['classifcation'] . 'ちゃん<br>';
-    echo $animal['description'] . '<br>';
-    echo $animal['birthday'] . '生まれ<br>';
-    echo '出身地' . $animal['birthplace'] . '<hr>';
+    echo $animal['type'] . 'の' . $animal['classifcation'] . 'ちゃん' . '<br>' .
+         $animal['description'] . '<br>' .
+         $animal['birthday'] . '生まれ' . '<br>' .
+         '出身地' . $animal['birthplace'] . '<hr>';
 }
