@@ -18,13 +18,12 @@ if (isset($keyword)) {
     $stmt = $dbh->prepare($sql);
     $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
     $keyword = '%' . $keyword . '%';
-    $stmt->execute();
 } else {
     $sql = 'SELECT * FROM animals';
     $stmt = $dbh->prepare($sql);
-    $stmt->execute();
 }
 
+$stmt->execute();
 $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
