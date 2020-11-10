@@ -16,8 +16,8 @@ $keyword = $_GET['keyword'];
 if (isset($keyword)) {
     $sql = 'SELECT * FROM animals WHERE description LIKE :keyword';
     $stmt = $dbh->prepare($sql);
-    $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
     $keyword = '%' . $keyword . '%';
+    $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
 } else {
     $sql = 'SELECT * FROM animals';
     $stmt = $dbh->prepare($sql);
