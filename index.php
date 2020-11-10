@@ -11,19 +11,17 @@ try {
     exit;
 }
 
-$sql = 'SELECT * FROM animals';
-$stmt = $dbh->prepare($sql);
-
-$stmt->execute();
-
 $keyword = $_GET['keyword'];
-if ($keyword != '') {
-    $sql2 = 'SELECT * FROM animals WHERE description LIKE :keyword';
-    $stmt = $dbh->prepare($sql2);
 
+if (isset($keyword)) {
+    $sql = 'SELECT * FROM animals WHERE description LIKE :keyword';
+    $stmt = $dbh->prepare($sql);
     $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
     $keyword = '%' . $keyword . '%';
-
+    $stmt->execute();
+} else {
+    $sql = 'SELECT * FROM animals';
+    $stmt = $dbh->prepare($sql);
     $stmt->execute();
 }
 
