@@ -16,7 +16,7 @@ $stmt = $dbh->prepare($sql);
 
 $stmt->execute();
 
-$keyword = $_POST["keyword"];
+$keyword = $_GET['keyword'];
 if ($keyword != '') {
     $sql2 = 'SELECT * FROM animals WHERE description LIKE :keyword';
     $stmt = $dbh->prepare($sql2);
@@ -42,7 +42,7 @@ $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h2>本日のご紹介のペット！</h2>
 
-    <form action="index.php" method="post">
+    <form action="index.php" method="get">
         キーワード: <input type="text" name="keyword" placeholder="キーワードの入力">
         <input type="submit" value="検索">
     </form>
